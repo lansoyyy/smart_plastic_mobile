@@ -3,8 +3,8 @@ import 'package:smart_plastic_mobile/utlis/colors.dart';
 import 'package:smart_plastic_mobile/widgets/drawer_widget.dart';
 import 'package:smart_plastic_mobile/widgets/text_widget.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class RedeemPage extends StatelessWidget {
+  const RedeemPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: primary,
         centerTitle: true,
         title: TextWidget(
-          text: 'Dashboard',
+          text: 'Redeem',
           fontSize: 18,
           fontFamily: 'Bold',
           color: Colors.white,

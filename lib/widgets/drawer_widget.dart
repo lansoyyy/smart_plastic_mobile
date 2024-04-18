@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smart_plastic_mobile/screens/auth/login_screen.dart';
+import 'package:smart_plastic_mobile/screens/home_screen.dart';
+import 'package:smart_plastic_mobile/screens/tabs/records_page.dart';
+import 'package:smart_plastic_mobile/screens/tabs/redeem_page.dart';
 import 'package:smart_plastic_mobile/widgets/text_widget.dart';
 
 import '../utlis/colors.dart';
@@ -19,61 +23,111 @@ class DrawerWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: primary),
-                      shape: BoxShape.circle,
-                      color: Colors.white),
-                  child: Padding(
-                    padding: const EdgeInsets.all(2.5),
-                    child: Image.asset(
-                      'assets/images/RTA logo 1.png',
-                      height: 35,
-                    ),
+            UserAccountsDrawerHeader(
+              decoration: const BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(color: Colors.grey, width: 0.5))),
+              accountEmail: TextWidget(
+                  text: 'doe@gmail.com', fontSize: 12, color: Colors.black),
+              accountName: TextWidget(
+                text: 'John Doe',
+                fontSize: 14,
+                color: Colors.black,
+              ),
+              currentAccountPicture: const Padding(
+                padding: EdgeInsets.all(5.0),
+                child: CircleAvatar(
+                  minRadius: 50,
+                  maxRadius: 50,
+                  backgroundImage: NetworkImage(
+                    '',
                   ),
                 ),
-                TextWidget(
-                  text: 'Zuc Ram Jr.',
-                  fontFamily: 'Bold',
-                  fontSize: 16,
-                ),
-                Builder(builder: (context) {
-                  return IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).closeDrawer();
-                    },
-                    icon: Icon(
-                      Icons.menu,
-                      color: primary,
-                      size: 32,
-                    ),
-                  );
-                }),
-              ],
+              ),
             ),
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             ListTile(
               onTap: () {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => const HomeScreen()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const HomeScreen()));
               },
               title: TextWidget(
-                text: 'Help',
+                text: 'Dashboard',
+                fontSize: 14,
+                fontFamily: 'Bold',
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const RedeemPage()));
+              },
+              title: TextWidget(
+                text: 'Redeem',
+                fontSize: 14,
+                fontFamily: 'Bold',
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const RecordsPage()));
+              },
+              title: TextWidget(
+                text: 'Records',
                 fontSize: 14,
                 fontFamily: 'Bold',
               ),
             ),
             ListTile(
               title: TextWidget(
-                text: 'About iParkPatrol',
+                text: 'Logout',
                 fontSize: 14,
                 fontFamily: 'Bold',
               ),
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                          title: const Text(
+                            'Logout Confirmation',
+                            style: TextStyle(
+                                fontFamily: 'QBold',
+                                fontWeight: FontWeight.bold),
+                          ),
+                          content: const Text(
+                            'Are you sure you want to Logout?',
+                            style: TextStyle(fontFamily: 'QRegular'),
+                          ),
+                          actions: <Widget>[
+                            MaterialButton(
+                              onPressed: () => Navigator.of(context).pop(true),
+                              child: const Text(
+                                'Close',
+                                style: TextStyle(
+                                    fontFamily: 'QRegular',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            MaterialButton(
+                              onPressed: () async {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LoginScreen()));
+                              },
+                              child: const Text(
+                                'Continue',
+                                style: TextStyle(
+                                    fontFamily: 'QRegular',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ));
+              },
             ),
           ],
         ),
