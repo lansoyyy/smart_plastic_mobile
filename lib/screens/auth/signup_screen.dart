@@ -21,6 +21,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final password = TextEditingController();
   final name = TextEditingController();
   final confirmpassword = TextEditingController();
+  final address = TextEditingController();
+  final number = TextEditingController();
 
   bool remembered = false;
   @override
@@ -35,7 +37,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 20,
               ),
               Image.asset(
-                'assets/images/logo.jpg',
+                'assets/images/logs.png',
                 width: 200,
               ),
               const SizedBox(
@@ -46,6 +48,25 @@ class _SignupScreenState extends State<SignupScreen> {
                 width: 275,
                 controller: name,
                 label: 'Name',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFieldWidget(
+                prefixIcon: Icons.location_city,
+                width: 275,
+                controller: address,
+                label: 'Address',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFieldWidget(
+                prefixIcon: Icons.phone,
+                width: 275,
+                inputType: TextInputType.number,
+                controller: number,
+                label: 'Contact Number',
               ),
               const SizedBox(
                 height: 10,
@@ -108,7 +129,7 @@ class _SignupScreenState extends State<SignupScreen> {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: id.text, password: password.text);
 
-      addUser(name.text, id.text, password.text);
+      addUser(name.text, id.text, password.text, address.text, number.text);
 
       showToast('Account created succesfully!');
       Navigator.of(context).pushReplacement(
