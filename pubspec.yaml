@@ -41,6 +41,9 @@ dependencies:
   cloud_firestore:
   firebase_storage:
   firebase_auth:
+  qr_code_scanner: ^1.0.0
+  flutter_barcode_scanner:
+  qr_flutter:
 
 dev_dependencies:
   flutter_test:

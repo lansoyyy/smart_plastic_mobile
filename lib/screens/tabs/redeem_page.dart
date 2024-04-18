@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:smart_plastic_mobile/screens/home_screen.dart';
 import 'package:smart_plastic_mobile/utlis/colors.dart';
 import 'package:smart_plastic_mobile/widgets/button_widget.dart';
 import 'package:smart_plastic_mobile/widgets/drawer_widget.dart';
@@ -155,6 +158,51 @@ class RedeemPage extends StatelessWidget {
                                                             Navigator.of(
                                                                     context)
                                                                 .pop();
+
+                                                            showDialog(
+                                                                barrierDismissible:
+                                                                    false,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) =>
+                                                                        AlertDialog(
+                                                                          title:
+                                                                              Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.min,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.center,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.center,
+                                                                            children: [
+                                                                              const Text(
+                                                                                'QR Code',
+                                                                                style: TextStyle(fontSize: 18, fontFamily: 'Bold', fontWeight: FontWeight.bold),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 300,
+                                                                                width: 300,
+                                                                                child: QrImageView(
+                                                                                  data: '123',
+                                                                                  version: QrVersions.auto,
+                                                                                  size: 200.0,
+                                                                                ),
+                                                                              )
+                                                                            ],
+                                                                          ),
+                                                                          actions: <Widget>[
+                                                                            MaterialButton(
+                                                                              onPressed: () async {
+                                                                                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomeScreen()));
+                                                                              },
+                                                                              child: const Text(
+                                                                                'Continue',
+                                                                                style: TextStyle(fontFamily: 'QRegular', fontWeight: FontWeight.bold),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ));
                                                           },
                                                           child: const Text(
                                                             'Continue',
