@@ -53,10 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-      apiKey: "AIzaSyD6Kc995PAarws-0iw5I60cu3pZxSFUSps",
-      authDomain: "plastic-bottle-classifier.firebaseapp.com",
-      projectId: "plastic-bottle-classifier",
-      storageBucket: "plastic-bottle-classifier.appspot.com",
-      messagingSenderId: "402202502043",
-      appId: "1:402202502043:web:233e1d8b2d9d090b46373e");
+      apiKey: "AIzaSyArBjull05oz-c1nlmpS3E_wLcDB_YQR1g",
+      authDomain: "plastic-bottle-classifie-4077d.firebaseapp.com",
+      projectId: "plastic-bottle-classifie-4077d",
+      storageBucket: "plastic-bottle-classifie-4077d.appspot.com",
+      messagingSenderId: "744621655610",
+      appId: "1:744621655610:web:791a4470c8b0958cd81703");
 }

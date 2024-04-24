@@ -8,7 +8,7 @@ import 'screens/home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    name: 'plastic-bottle-classifier',
+    name: 'plastic-bottle-classifie-4077d',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
