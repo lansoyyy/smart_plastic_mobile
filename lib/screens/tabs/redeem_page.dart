@@ -70,6 +70,7 @@ class RedeemPage extends StatelessWidget {
                   StreamBuilder<QuerySnapshot>(
                       stream: FirebaseFirestore.instance
                           .collection('Items')
+                          .where('qty', isGreaterThan: 0)
                           .snapshots(),
                       builder: (BuildContext context,
                           AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -200,6 +201,18 @@ class RedeemPage extends StatelessWidget {
                                                                             .docs[
                                                                         index]
                                                                     ['points'])
+                                                          });
+
+                                                          await FirebaseFirestore
+                                                              .instance
+                                                              .collection(
+                                                                  'Items')
+                                                              .doc(data
+                                                                  .docs[index]
+                                                                  .id)
+                                                              .update({
+                                                            'qty': FieldValue
+                                                                .increment(-1)
                                                           });
                                                           Navigator.of(context)
                                                               .pop();
